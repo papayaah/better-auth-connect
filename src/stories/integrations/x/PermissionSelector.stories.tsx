@@ -1,0 +1,39 @@
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { PermissionSelector } from "../../../components/PermissionSelector";
+import { tailwindPreset } from "../../../presets/tailwind";
+import { X_PERMISSIONS } from "../../../types";
+
+const meta: Meta<typeof PermissionSelector> = {
+  title: "Integrations/X/PermissionSelector",
+  component: PermissionSelector,
+  parameters: { layout: "centered" },
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: "520px", padding: "20px" }}>
+        <Story />
+      </div>
+    ),
+  ],
+  tags: ["autodocs"],
+};
+
+export default meta;
+type Story = StoryObj<typeof PermissionSelector>;
+
+const Wrapper = (args: React.ComponentProps<typeof PermissionSelector>) => {
+  const [selected, setSelected] = useState(args.selected);
+  return <PermissionSelector {...args} selected={selected} onChange={setSelected} />;
+};
+
+export const Default: Story = {
+  render: (args) => <Wrapper {...args} />,
+  args: {
+    platform: "x",
+    preset: tailwindPreset,
+    permissions: X_PERMISSIONS,
+    selected: X_PERMISSIONS.filter((p) => p.default || p.required).map((p) => p.id),
+    required: X_PERMISSIONS.filter((p) => p.required).map((p) => p.id),
+  },
+};
+

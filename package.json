@@ -1,0 +1,129 @@
+{
+  "name": "@reactkits.dev/better-auth-connect",
+  "version": "0.1.0",
+  "description": "Headless React library for connecting OAuth and API key accounts with better-auth",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/papayaah/better-auth-connect.git"
+  },
+  "homepage": "https://github.com/papayaah/better-auth-connect#readme",
+  "bugs": {
+    "url": "https://github.com/papayaah/better-auth-connect/issues"
+  },
+  "keywords": [
+    "react",
+    "better-auth",
+    "oauth",
+    "headless",
+    "tailwind",
+    "mantine",
+    "reddit",
+    "twitter",
+    "devto",
+    "account-connection",
+    "auth-connect"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./server/nextjs": {
+      "types": "./dist/server/nextjs.d.ts",
+      "import": "./dist/server/nextjs.js",
+      "require": "./dist/server/nextjs.cjs"
+    },
+    "./server/node": {
+      "types": "./dist/server/node.d.ts",
+      "import": "./dist/server/node.js",
+      "require": "./dist/server/node.cjs"
+    },
+    "./server/fetch": {
+      "types": "./dist/server/fetch.d.ts",
+      "import": "./dist/server/fetch.js",
+      "require": "./dist/server/fetch.cjs"
+    },
+    "./presets/tailwind": {
+      "types": "./dist/presets/tailwind.d.ts",
+      "import": "./dist/presets/tailwind.js",
+      "require": "./dist/presets/tailwind.cjs"
+    },
+    "./presets/mantine": {
+      "types": "./dist/presets/mantine.d.ts",
+      "import": "./dist/presets/mantine.js",
+      "require": "./dist/presets/mantine.cjs"
+    },
+    "./presets/default": {
+      "types": "./dist/presets/default.d.ts",
+      "import": "./dist/presets/default.js",
+      "require": "./dist/presets/default.cjs"
+    },
+    "./icons": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run storybook\" \"npm run dev:demo\" --names \"storybook,demo\" --prefix-colors \"blue,green\"",
+    "dev:demo": "cd demo && npm run dev",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "better-auth": "^1.4.0"
+  },
+  "peerDependenciesMeta": {
+    "@mantine/core": {
+      "optional": true
+    },
+    "@mantine/hooks": {
+      "optional": true
+    },
+    "lucide-react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "idb": "^8.0.0"
+  },
+  "devDependencies": {
+    "@mantine/core": "^8.3.9",
+    "@mantine/hooks": "^8.3.9",
+    "@storybook/react-vite": "^10.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.19",
+    "better-auth": "^1.4.0",
+    "concurrently": "^9.2.1",
+    "lucide-react": "^0.554.0",
+    "postcss": "^8.4.38",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "storybook": "^10.0.0",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.3.0"
+  }
+}
