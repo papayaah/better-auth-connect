@@ -25,53 +25,110 @@
     "auth-connect"
   ],
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "development": {
+        "types": "./src/index.ts",
+        "import": "./src/index.ts",
+        "require": "./src/index.ts"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      }
     },
     "./server/nextjs": {
-      "types": "./dist/server/nextjs.d.ts",
-      "import": "./dist/server/nextjs.js",
-      "require": "./dist/server/nextjs.cjs"
+      "development": {
+        "types": "./src/server/nextjs/index.ts",
+        "import": "./src/server/nextjs/index.ts",
+        "require": "./src/server/nextjs/index.ts"
+      },
+      "default": {
+        "types": "./dist/nextjs.d.ts",
+        "import": "./dist/server/nextjs.js",
+        "require": "./dist/server/nextjs.cjs"
+      }
     },
     "./server/node": {
-      "types": "./dist/server/node.d.ts",
-      "import": "./dist/server/node.js",
-      "require": "./dist/server/node.cjs"
+      "development": {
+        "types": "./src/server/node/index.ts",
+        "import": "./src/server/node/index.ts",
+        "require": "./src/server/node/index.ts"
+      },
+      "default": {
+        "types": "./dist/server/node.d.ts",
+        "import": "./dist/server/node.js",
+        "require": "./dist/server/node.cjs"
+      }
     },
     "./server/fetch": {
-      "types": "./dist/server/fetch.d.ts",
-      "import": "./dist/server/fetch.js",
-      "require": "./dist/server/fetch.cjs"
+      "development": {
+        "types": "./src/server/fetch/index.ts",
+        "import": "./src/server/fetch/index.ts",
+        "require": "./src/server/fetch/index.ts"
+      },
+      "default": {
+        "types": "./dist/server/fetch.d.ts",
+        "import": "./dist/server/fetch.js",
+        "require": "./dist/server/fetch.cjs"
+      }
     },
     "./presets/tailwind": {
-      "types": "./dist/presets/tailwind.d.ts",
-      "import": "./dist/presets/tailwind.js",
-      "require": "./dist/presets/tailwind.cjs"
+      "development": {
+        "types": "./src/presets/tailwind.tsx",
+        "import": "./src/presets/tailwind.tsx",
+        "require": "./src/presets/tailwind.tsx"
+      },
+      "default": {
+        "types": "./dist/presets/tailwind.d.ts",
+        "import": "./dist/presets/tailwind.js",
+        "require": "./dist/presets/tailwind.cjs"
+      }
     },
     "./presets/mantine": {
-      "types": "./dist/presets/mantine.d.ts",
-      "import": "./dist/presets/mantine.js",
-      "require": "./dist/presets/mantine.cjs"
+      "development": {
+        "types": "./src/presets/mantine.tsx",
+        "import": "./src/presets/mantine.tsx",
+        "require": "./src/presets/mantine.tsx"
+      },
+      "default": {
+        "types": "./dist/presets/mantine.d.ts",
+        "import": "./dist/presets/mantine.js",
+        "require": "./dist/presets/mantine.cjs"
+      }
     },
     "./presets/default": {
-      "types": "./dist/presets/default.d.ts",
-      "import": "./dist/presets/default.js",
-      "require": "./dist/presets/default.cjs"
+      "development": {
+        "types": "./src/presets/default.tsx",
+        "import": "./src/presets/default.tsx",
+        "require": "./src/presets/default.tsx"
+      },
+      "default": {
+        "types": "./dist/presets/default.d.ts",
+        "import": "./dist/presets/default.js",
+        "require": "./dist/presets/default.cjs"
+      }
     },
     "./icons": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "development": {
+        "types": "./src/icons.tsx",
+        "import": "./src/icons.tsx",
+        "require": "./src/icons.tsx"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      }
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "engines": {
     "node": ">=20.19.0"
