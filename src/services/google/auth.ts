@@ -40,7 +40,6 @@ export const createGoogleAuthService = (config: GoogleAuthServiceConfig) => {
       scopes: string[] = [
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email',
-        'https://www.googleapis.com/auth/youtube.readonly',
       ]
     ) => {
       try {
@@ -75,7 +74,6 @@ export const createGoogleAuthService = (config: GoogleAuthServiceConfig) => {
       scopes: string[] = [
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email',
-        'https://www.googleapis.com/auth/youtube.readonly',
       ]
     ) => {
       try {

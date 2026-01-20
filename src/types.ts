@@ -44,7 +44,6 @@ export const PLATFORM_CONFIGS: Record<Platform, PlatformConfig> = {
     defaultScopes: [
       'https://www.googleapis.com/auth/userinfo.profile',
       'https://www.googleapis.com/auth/userinfo.email',
-      'https://www.googleapis.com/auth/youtube.readonly',
     ],
     callbackPath: '/app/integrations/google',
   },
@@ -144,7 +143,7 @@ export const GOOGLE_PERMISSIONS: Permission[] = [
     id: 'https://www.googleapis.com/auth/youtube.readonly',
     label: 'YouTube (Read)',
     description: 'Read YouTube channel and video data',
-    default: true,
+    default: false,
   },
   {
     id: 'https://www.googleapis.com/auth/youtube',

@@ -27,9 +27,13 @@ export const IntegrationCard = ({
 }: IntegrationCardProps) => {
   const config = PLATFORM_CONFIGS[platform];
   const platformPermissions = PLATFORM_PERMISSIONS[platform];
+  // For Google, default to showing only required (basic) permissions unless permissionIds is explicitly provided
+  const defaultToBasicOnly = platform === 'google' && !permissionIds;
   const permissions =
     permissionIds && permissionIds.length > 0
       ? platformPermissions.filter((p) => p.required || permissionIds.includes(p.id))
+      : defaultToBasicOnly
+      ? platformPermissions.filter((p) => p.required)
       : platformPermissions;
   const colors = PLATFORM_COLORS[platform];
   const { services, authClient } = useIntegrationContext();
