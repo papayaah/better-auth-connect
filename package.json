@@ -77,6 +77,18 @@
         "require": "./dist/server/fetch.cjs"
       }
     },
+    "./server/drizzle": {
+      "development": {
+        "types": "./src/server/drizzle/index.ts",
+        "import": "./src/server/drizzle/index.ts",
+        "require": "./src/server/drizzle/index.ts"
+      },
+      "default": {
+        "types": "./dist/server/drizzle.d.ts",
+        "import": "./dist/server/drizzle.js",
+        "require": "./dist/server/drizzle.cjs"
+      }
+    },
     "./presets/tailwind": {
       "development": {
         "types": "./src/presets/tailwind.tsx",
@@ -145,7 +157,8 @@
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "better-auth": "^1.4.0"
+    "better-auth": "^1.4.0",
+    "drizzle-orm": "^0.44.0 || ^0.45.0 || ^1.0.0"
   },
   "peerDependenciesMeta": {
     "@mantine/core": {
@@ -156,6 +169,9 @@
     },
     "lucide-react": {
       "optional": true
+    },
+    "drizzle-orm": {
+      "optional": true
     }
   },
   "dependencies": {
@@ -164,6 +180,7 @@
   "devDependencies": {
     "@mantine/core": "^8.3.9",
     "@mantine/hooks": "^8.3.9",
+    "drizzle-orm": "^0.45.0",
     "@storybook/react-vite": "^10.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
