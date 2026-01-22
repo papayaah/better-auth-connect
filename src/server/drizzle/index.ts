@@ -49,16 +49,20 @@ export function serializeDates<T>(obj: T): T {
  * export const db = drizzle(client, { schema });
  * ```
  */
-export function wrapPostgresForBetterAuth<T extends { unsafe: (...args: unknown[]) => unknown }>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function wrapPostgresForBetterAuth<T extends Record<string, any>>(
   client: T
 ): T {
+  if (typeof client.unsafe !== 'function') {
+    return client;
+  }
+
   const originalUnsafe = client.unsafe.bind(client);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (client as any).unsafe = (query: string, params?: unknown[], options?: unknown) => {
     const serializedParams = params ? serializeDates(params) : params;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (originalUnsafe as any)(query, serializedParams, options);
+    return originalUnsafe(query, serializedParams, options);
   };
 
   return client;
