@@ -549,4 +549,5 @@ export interface UseAuthSessionReturn {
   session: Session | null;
   loading: boolean;
   error: Error | null;
+  refetch: () => Promise<void>;
 }

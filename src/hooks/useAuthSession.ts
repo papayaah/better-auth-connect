@@ -33,5 +33,6 @@ export const useAuthSession = (): UseAuthSessionReturn => {
     session,
     loading,
     error,
+    refetch: fetchSession,
   };
 };
