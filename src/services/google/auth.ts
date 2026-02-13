@@ -28,7 +28,7 @@ export interface GoogleAuthServiceConfig {
 }
 
 export const createGoogleAuthService = (config: GoogleAuthServiceConfig) => {
-  const { authClient, apiBasePath = '', callbackURL = '/app/integrations/google' } = config;
+  const { authClient, apiBasePath = '', callbackURL = '/' } = config;
 
   return {
     /**
