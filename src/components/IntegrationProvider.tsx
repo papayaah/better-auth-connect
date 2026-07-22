@@ -61,23 +61,20 @@ export const IntegrationProvider = ({
 }: IntegrationProviderProps) => {
   // Ensure the authClient has the expected methods, polyfilling if necessary for different versions
   const authClient = useMemo(() => {
-    if ('getSession' in rawAuthClient && typeof (rawAuthClient as any).getSession === 'function') return rawAuthClient;
-
-    return new Proxy(rawAuthClient, {
-      get(target, prop, receiver) {
-        if (prop === 'getSession') {
-          return async () => {
-            if ((target as any).session?.get) {
-              return await (target as any).session.get();
-            }
+    if (!rawAuthClient) return rawAuthClient;
+    if (typeof (rawAuthClient as any).getSession !== 'function') {
+      (rawAuthClient as any).getSession = async () => {
+        if (typeof (rawAuthClient as any).session?.get === 'function') {
+          try {
+            return await (rawAuthClient as any).session.get();
+          } catch {
             return { data: null };
-          };
+          }
         }
-        const val = Reflect.get(target, prop, receiver);
-        if (typeof val === 'function') return val.bind(target);
-        return val;
-      },
-    }) as AuthClient;
+        return { data: null };
+      };
+    }
+    return rawAuthClient;
   }, [rawAuthClient]);
 
   const services = useMemo<Services>(() => {
