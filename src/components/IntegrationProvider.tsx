@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
 import type { AuthClient, CacheConfig } from '../types';
 import { createRedditAuthService, type RedditAuthServiceConfig } from '../services/reddit/auth';
@@ -52,11 +54,32 @@ export interface IntegrationProviderProps {
 
 export const IntegrationProvider = ({
   children,
-  authClient,
+  authClient: rawAuthClient,
   cacheConfig = { ttl: 300000, enabled: true },
   onError,
   apiBasePath = '',
 }: IntegrationProviderProps) => {
+  // Ensure the authClient has the expected methods, polyfilling if necessary for different versions
+  const authClient = useMemo(() => {
+    if ('getSession' in rawAuthClient && typeof (rawAuthClient as any).getSession === 'function') return rawAuthClient;
+
+    return new Proxy(rawAuthClient, {
+      get(target, prop, receiver) {
+        if (prop === 'getSession') {
+          return async () => {
+            if ((target as any).session?.get) {
+              return await (target as any).session.get();
+            }
+            return { data: null };
+          };
+        }
+        const val = Reflect.get(target, prop, receiver);
+        if (typeof val === 'function') return val.bind(target);
+        return val;
+      },
+    }) as AuthClient;
+  }, [rawAuthClient]);
+
   const services = useMemo<Services>(() => {
     const redditConfig: RedditAuthServiceConfig = {
       authClient,

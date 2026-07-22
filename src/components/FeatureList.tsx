@@ -1,3 +1,5 @@
+"use client";
+
 import type { Platform, IconSet, ComponentPreset } from '../types';
 import { PLATFORM_FEATURES, PLATFORM_PERMISSIONS, PLATFORM_COLORS } from '../types';
 

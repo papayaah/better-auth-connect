@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback, useEffect } from 'react';
 import type { IntegrationCardProps, Account, User } from '../types';
 import { PLATFORM_CONFIGS, PLATFORM_PERMISSIONS, PLATFORM_COLORS } from '../types';
@@ -33,8 +35,8 @@ export const IntegrationCard = ({
     permissionIds && permissionIds.length > 0
       ? platformPermissions.filter((p) => p.required || permissionIds.includes(p.id))
       : defaultToBasicOnly
-      ? platformPermissions.filter((p) => p.required)
-      : platformPermissions;
+        ? platformPermissions.filter((p) => p.required)
+        : platformPermissions;
   const colors = PLATFORM_COLORS[platform];
   const { services, authClient } = useIntegrationContext();
   const { accounts, loading, error, connect, disconnect, refresh } = useIntegration(platform);
@@ -66,10 +68,10 @@ export const IntegrationCard = ({
   const { Card, Button, Flex, Text, Avatar, IconButton, Alert, Loader } = preset;
 
   const PlatformIcon = icons?.[
-    platform === 'x' ? 'X' 
-    : platform === 'reddit' ? 'Reddit' 
-    : platform === 'google' ? 'Google'
-    : 'DevTo'
+    platform === 'x' ? 'X'
+      : platform === 'reddit' ? 'Reddit'
+        : platform === 'google' ? 'Google'
+          : 'DevTo'
   ];
   const RefreshIcon = icons?.RefreshCw;
   const AlertIcon = icons?.AlertCircle;
@@ -196,8 +198,8 @@ export const IntegrationCard = ({
                   {platform === 'reddit'
                     ? 'manage posts and interact with communities'
                     : platform === 'x'
-                    ? 'manage posts and interact with your audience'
-                    : 'publish and manage your articles'}
+                      ? 'manage posts and interact with your audience'
+                      : 'publish and manage your articles'}
                   .
                 </Text>
               </Flex>

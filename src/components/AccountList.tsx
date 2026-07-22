@@ -1,3 +1,5 @@
+"use client";
+
 import type { AccountListProps } from '../types';
 import { AccountCard } from './AccountCard';
 

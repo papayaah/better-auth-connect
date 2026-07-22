@@ -1,3 +1,5 @@
+"use client";
+
 import type { PermissionSelectorProps, Platform, ComponentPreset, Permission } from '../types';
 import { PLATFORM_COLORS } from '../types';
 

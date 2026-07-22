@@ -238,7 +238,7 @@ export interface User {
   id: string;
   name?: string;
   email?: string;
-  image?: string;
+  image?: string | null;
 }
 
 export interface Session {
@@ -342,7 +342,7 @@ export interface TextProps {
 }
 
 export interface AvatarProps {
-  src?: string;
+  src?: string | null;
   alt?: string;
   fallback?: ReactNode;
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -425,12 +425,13 @@ export interface IconSet {
 // ============================================================================
 
 export interface AuthClient {
-  getSession: () => Promise<{ data: Session | null } | null>;
+  getSession: () => Promise<any>;
+  useSession?: () => any;
   signIn: {
-    social: (options: { provider: string; callbackURL: string; scopes?: string[] }) => Promise<void>;
+    social: (options: { provider: string; callbackURL: string; scopes?: string[] }) => Promise<any>;
   };
-  linkSocial: (options: { provider: string; callbackURL: string; scopes?: string[] }) => Promise<void>;
-  signOut: () => Promise<void>;
+  linkSocial: (options: { provider: string; callbackURL: string; scopes?: string[] }) => Promise<any>;
+  signOut: () => Promise<any>;
 }
 
 export interface CacheConfig {

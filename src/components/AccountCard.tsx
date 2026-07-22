@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import type { AccountCardProps } from '../types';
 import { PLATFORM_CONFIGS } from '../types';
@@ -147,7 +149,7 @@ export const AccountCard = ({
         <Flex align="center" gap="md">
           {/* Avatar */}
           <Avatar
-            src={avatarUrl}
+            src={avatarUrl || undefined}
             alt={getDisplayName()}
             size="md"
             fallback={PlatformIcon ? <PlatformIcon size={20} /> : null}
@@ -199,8 +201,8 @@ export const AccountCard = ({
                 timeRemaining === 'Expired'
                   ? 'error'
                   : isExpiringSoon
-                  ? 'warning'
-                  : 'info'
+                    ? 'warning'
+                    : 'info'
               }
               icon={AlertIcon && <AlertIcon size={16} />}
             >
@@ -244,8 +246,8 @@ export const AccountCard = ({
             {account.accessToken === 'hidden'
               ? 'Session is active. Token details are managed securely.'
               : account.refreshToken
-              ? `${config.name} access tokens are automatically refreshed. Automatic token refresh is enabled.`
-              : `${config.name} access token will expire. Reconnect with "Stay connected" enabled to get a refresh token for automatic renewal.`}
+                ? `${config.name} access tokens are automatically refreshed. Automatic token refresh is enabled.`
+                : `${config.name} access token will expire. Reconnect with "Stay connected" enabled to get a refresh token for automatic renewal.`}
           </Text>
         </Flex>
       )}

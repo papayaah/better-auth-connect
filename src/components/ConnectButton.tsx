@@ -1,3 +1,5 @@
+"use client";
+
 import type { ConnectButtonProps } from '../types';
 import { PLATFORM_CONFIGS } from '../types';
 
