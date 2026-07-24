@@ -5,3 +5,5 @@ export * from './AccountCard';
 export * from './AccountList';
 export * from './PermissionSelector';
 export * from './ApiKeyInput';
+export * from './AuthCard';
+export * from './UserButton';

@@ -52,6 +52,8 @@ export type {
   ConnectButtonProps,
   PermissionSelectorProps,
   ApiKeyInputProps,
+  AuthCardProps,
+  UserButtonProps,
   // Feature types
   PlatformFeature,
   // Hook return types
@@ -85,6 +87,8 @@ export { AccountList } from './components/AccountList';
 export { PermissionSelector, PermissionItem, type PermissionItemProps } from './components/PermissionSelector';
 export { ApiKeyInput } from './components/ApiKeyInput';
 export { FeatureList, type FeatureListProps } from './components/FeatureList';
+export { AuthCard } from './components/AuthCard';
+export { UserButton } from './components/UserButton';
 
 // Hooks
 export { useIntegration } from './hooks/useIntegration';

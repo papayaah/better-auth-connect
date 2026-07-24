@@ -525,6 +525,65 @@ export interface ApiKeyInputProps {
 }
 
 // ============================================================================
+// Auth (sign-in) Component Types
+// ============================================================================
+
+/**
+ * Sign-in surface for a login page. Unlike IntegrationCard (which links a
+ * third-party account to an already-authenticated user), AuthCard is the
+ * app's front-door authentication UI: signed-out users sign in, signed-in
+ * users see a confirmation and can continue or sign out.
+ */
+export interface AuthCardProps {
+  /** OAuth provider used for sign-in. Only 'google' is wired today. */
+  provider?: 'google';
+  preset: ComponentPreset;
+  icons?: IconSet;
+  /** Heading shown to signed-out users. Default: "Welcome back". */
+  title?: string;
+  /** Sub-text shown to signed-out users. */
+  description?: string;
+  /** Sign-in button label. Default: "Continue with Google". */
+  buttonLabel?: string;
+  /** Where Better Auth redirects after a successful OAuth round-trip. */
+  callbackURL?: string;
+  /** OAuth scopes to request. Defaults to profile + email. */
+  scopes?: string[];
+  /** Render signed-in confirmation (avatar/name/email). Default: true. */
+  showSignedIn?: boolean;
+  /** Called (via a button) when a signed-in user chooses to continue. */
+  onContinue?: () => void;
+  /** Label for the continue button; only rendered when onContinue is set. */
+  continueLabel?: string;
+  /** Called after sign-out completes. */
+  onSignedOut?: () => void;
+  /** Footer node, e.g. terms/privacy copy. */
+  footer?: ReactNode;
+  onError?: (error: Error) => void;
+  className?: string;
+}
+
+/**
+ * Compact account chip for nav bars / sidebars. Shows the signed-in user with
+ * a sign-out control, or a compact sign-in button when signed out.
+ */
+export interface UserButtonProps {
+  provider?: 'google';
+  preset: ComponentPreset;
+  icons?: IconSet;
+  /** Collapsed (icon-only) rendering for narrow sidebars. */
+  collapsed?: boolean;
+  scopes?: string[];
+  callbackURL?: string;
+  /** Sign-in button label when signed out. Default: "Sign in with Google". */
+  signInLabel?: string;
+  /** Called after sign-out completes, e.g. to redirect to /login. */
+  onSignedOut?: () => void;
+  onError?: (error: Error) => void;
+  className?: string;
+}
+
+// ============================================================================
 // Hook Return Types
 // ============================================================================
 
