@@ -428,9 +428,9 @@ export interface AuthClient {
   getSession: () => Promise<any>;
   useSession?: () => any;
   signIn: {
-    social: (options: { provider: string; callbackURL: string; scopes?: string[] }) => Promise<any>;
+    social: (options: { provider: string; callbackURL: string; scopes?: string[]; authParams?: Record<string, any> }) => Promise<any>;
   };
-  linkSocial: (options: { provider: string; callbackURL: string; scopes?: string[] }) => Promise<any>;
+  linkSocial: (options: { provider: string; callbackURL: string; scopes?: string[]; authParams?: Record<string, any> }) => Promise<any>;
   signOut: () => Promise<any>;
 }
 

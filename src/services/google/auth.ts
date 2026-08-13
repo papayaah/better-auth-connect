@@ -60,6 +60,9 @@ export const createGoogleAuthService = (config: GoogleAuthServiceConfig) => {
             provider: 'google',
             callbackURL,
             scopes,
+            authParams: {
+              prompt: 'select_account',
+            },
           });
         }
       } catch (error) {
@@ -81,6 +84,9 @@ export const createGoogleAuthService = (config: GoogleAuthServiceConfig) => {
           provider: 'google',
           callbackURL,
           scopes,
+          authParams: {
+            prompt: 'select_account',
+          },
         });
       } catch (error) {
         throw new ConnectionError('google', error instanceof Error ? error.message : undefined);
